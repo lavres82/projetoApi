@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container py-5">
+  <h2>Cartão de Informação</h2>
+  <table class="table" id="data"></table>
+</div>
+
+<script>
+window.onload = function() {
+  const data = JSON.parse(localStorage.getItem('data'));
+  let table = document.getElementById("data");
+  for (let key in data) {
+    let row = table.insertRow(-1);
+    let cell1 = row.insertCell(-1);
+    let cell2 = row.insertCell(-1);
+    cell1.innerHTML = key;
+    if (key === "image") {
+      let img = document.createElement('img');
+      img.src = data[key];
+      img.width = 100;  
+      img.height = 100; 
+      cell2.appendChild(img);
+    } else {
+      cell2.innerHTML = data[key];
+    }
+  }
+}
+</script>
+
+</body>
+</html>
